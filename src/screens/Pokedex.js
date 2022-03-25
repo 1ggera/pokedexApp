@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { getPokemonsApi, getPokemonDetailsByUrlApi } from "../api/pokemon"
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { getPokemonsApi, getPokemonDetailsByUrlApi } from "../api/pokemon";
+import PokemonList from '../components/PokemonList';
+
 
 export default function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
@@ -33,7 +34,7 @@ export default function Pokedex() {
           name: pokemonDetails.name,
           type: pokemonDetails.types[0].type.name,
           orden: pokemonDetails.order,
-          imagen: pokemonDetails.sprites.other['official-artwork'].frot_default
+          imagen: pokemonDetails.sprites.other['official-artwork'].front_default
         })
       }
       setPokemons([...pokemons, ...pokemonsArray]); //desde acá actualizamos el estado. Los ... indican traer la info del array dato por dato
@@ -45,7 +46,7 @@ export default function Pokedex() {
   //lo que se renderiza en la screen
   return (
     <SafeAreaView>
-      <Text>Pokedex</Text>
+      <PokemonList pokemons={pokemons} />
     </SafeAreaView>
   )
 }
