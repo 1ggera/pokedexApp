@@ -1,15 +1,26 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import {capitalize} from 'lodash';
+//import { getPokemonDetailsByUrlApi } from '../api/pokemon';
+import { useNavigation } from "@react-navigation/native"
 import getColorByPokemonType from '../utils/getColorByPokemonType';
 
 export default function PokemonCard(props) {
   const { pokemon } = props;
+  const navigation = useNavigation();
   
-  const bgStyles = { backgroundColor: "#fc2", ...styles.bgStyles }
+  //inspecciono
+  //console.log(pokemonColor)
 
+  //solicito el color y lo guardo en una variable
+  const pokemonColor = getColorByPokemonType(pokemon.type);
+  //luego aplico la variable en una función
+  const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles }
+  
   const goToPokemon = () => {
-    console.log("Vamos Boca pokemon: ${pokemon.name}");
-    console.log(pokemon);
+    navigation.navigate("Pokemon", { id: pokemon.id });
+    //console.log("Pokemon", {id: pokemon.id});
+    //console.log(pokemon.id);
   }
 
   return (
@@ -19,7 +30,7 @@ export default function PokemonCard(props) {
           <View style={bgStyles}>
             <Text style={styles.number}>#{`${pokemon.orden}`.padStart(3,0)}</Text>
 
-            <Text style={styles.name}>{pokemon.name}</Text>
+            <Text style={styles.name}>{capitalize(pokemon.name)}</Text>
 
             <Image source={{ uri: pokemon.imagen }} style={styles.image} />
           </View>

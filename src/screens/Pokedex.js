@@ -6,7 +6,9 @@ import PokemonList from '../components/PokemonList';
 
 export default function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
-  console.log("pokemons--->", pokemons);
+  const [ nextUrl, setNextUrl] = useState(null);
+
+    //console.log("pokemons--->", pokemons);
     //useState está compuesto por el estado (pokemons) y la función que se ocupa de actualizar nuestro estado(setPokemon)
 
   useEffect(() => {
@@ -18,7 +20,10 @@ export default function Pokedex() {
   //función q devuelve los datos de los pokemones
   const loadPokemons = async () =>{
     try{
-      const response = await getPokemonsApi();
+      const response = await getPokemonsApi(nextUrl);
+      //console.log(response.count);
+      setNextUrl(response.next);
+      //console.log(response);
       
       const pokemonsArray = [];      
   //para traer los datos aplico un for asincrono.Este ejecuta la petición pór cad iteración a la url. Consiste en que hasta q no termine de traer los datos de uno no trae el otro.  
@@ -26,7 +31,7 @@ export default function Pokedex() {
       for await (const pokemon of response.results){
         // console.log(pokemon.url); --> PARA inspeccionar LOS  POKEMON
         const pokemonDetails = await getPokemonDetailsByUrlApi(pokemon.url);
-        console.log(pokemonDetails);
+        // console.log(pokemonDetails);
         
         //con push ordeno traer información del pokemons que quiero
         pokemonsArray.push({
@@ -46,7 +51,7 @@ export default function Pokedex() {
   //lo que se renderiza en la screen
   return (
     <SafeAreaView>
-      <PokemonList pokemons={pokemons} />
+      <PokemonList pokemons={pokemons} loadPokemons={loadPokemons} isNext={nextUrl}/>
     </SafeAreaView>
   )
 }
