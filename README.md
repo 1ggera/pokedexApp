@@ -2,6 +2,4 @@
 
 App en React Native para Android e iOS
 
-Para mí hay 150. 
-
-¡Vamo a calmarno! *meme de squartle*
+Para mí había 150 pero tenés más de 1000 para elegir 📦
