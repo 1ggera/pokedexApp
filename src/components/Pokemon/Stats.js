@@ -7,6 +7,7 @@ export default function Stats(props) {
   const { stats } = props;
 
   const barStyles = (num) => {
+    //si no es mayor a 49 es rojo, sino, es verde
     const color = num > 49 ? "#00ac17" : "#ff3e3e"
     return {
       backgroundColor: color,
@@ -15,7 +16,7 @@ export default function Stats(props) {
   }
   return (
     <View styles={styles.content}>
-      <Text style={styles.title}>Base Stats...</Text>
+      <Text style={styles.title}>Base Stats</Text>
       {map(stats, (item, index) => (
         <View key={index} style={styles.block}>
           <View style={styles.blockTitle}>
