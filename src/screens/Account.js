@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text} from 'react-native';
 import LoginForm from "../components/Auth/LoginForm";
-import UserPanel from '../components/Auth/UserPanel';
+import UserPanel from "../components/Auth/UserPanel";
 
 export default function Account() {
 
