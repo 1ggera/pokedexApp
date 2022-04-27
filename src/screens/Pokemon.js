@@ -10,8 +10,6 @@ import Stats from '../components/Pokemon/Stats';
 // ? import { useState } from 'react/cjs/react.production.min';
 
 export default function Pokemon(props){
-  //console.log(props);
-
   const { navigation, route:{params} } = props;
   const [pokemon, setPokemon] = useState(null)
   console.log(params.id);
