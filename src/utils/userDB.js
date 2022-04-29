@@ -7,7 +7,7 @@ export const user = {
 //datos q devolverá si el login es correcto
 export const userDetails = {
   username: "geranio92",
-  fristName: "Gerardo",
+  firstname: "Gerardo",
   lastname: "Garcia",
   email: "geranio92@gmail.com",
 };
