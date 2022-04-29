@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   order:{
     color:"#fff",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   contentImg:{
     flex:1,

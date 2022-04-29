@@ -5,28 +5,29 @@ import { getPokemonDetailsApi } from "../api/pokemon";
 import Header from "../components/Pokemon/Header";
 import Type from "../components/Pokemon/Type";
 import Stats from '../components/Pokemon/Stats';
-
-
-// ? import { useState } from 'react/cjs/react.production.min';
+import Favorite from "../components/Pokemon/Favorite";
+import useAuth from "../hooks/useAuth";
 
 export default function Pokemon(props){
-  const { navigation, route:{params} } = props;
-  const [pokemon, setPokemon] = useState(null)
-  console.log(params.id);
+  const { navigation, route:{params}, } = props;
+  const [pokemon, setPokemon] = useState(null);
+  const { auth } = useAuth();
+  //console.log(params.id);
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      //acá digo q si existe auth renderize el componente sino undefined
+      headerRight: () => auth && <Favorite id={pokemon?.id}/>,
       headerLeft: () => <Icon name="arrow-left" color="#fff" size={20} style={{ marginLeft: 20 }} onPress={() => console.log('Ir atrás')} />,
     })
-  }, [navigation, params])
+  }, [navigation, params, pokemon])
 
   useEffect(() => {
       (async () => {
         try{
-          const response= await getPokemonDetailsApi(params.id)
+          const response = await getPokemonDetailsApi(params.id)
           setPokemon(response);
-          //console.log(response);
+          //console.  log(response);
         }catch(error){
           navigation.goBack();
         }
