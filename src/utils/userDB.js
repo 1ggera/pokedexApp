@@ -1,12 +1,12 @@
 //datos para ingresar
 export const user = {
-  username: "geranio92",
-  password: "123456",
+  username: "ge",
+  password: "123",
 };
 
 //datos q devolverá si el login es correcto
 export const userDetails = {
-  username: "geranio92",
+  username: "ge",
   firstname: "Gerardo",
   lastname: "Garcia",
   email: "geranio92@gmail.com",
