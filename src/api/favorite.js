@@ -23,3 +23,13 @@ export async function addPokemonFavoriteApi(id){
   }
 }
 
+//verifica si el pokemon ya está agendado en favoritos. Solo obtiene el estado de getPokem y chekea si existe el ID
+export async function isPokemonFavoriteApi(id){
+  try{
+    const response = await getPokemonsFavoriteApi();
+    return includes(response, id)// a include se le pasa un array y el valor que buscamos dentro del array. NO se le envía objetos. Array de un solo nivel. Si lo encuentra devuelve true sino false
+  }catch (error)
+  {
+    throw error;
+  }
+}

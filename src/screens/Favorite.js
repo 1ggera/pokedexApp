@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, Text, Button } from 'react-native'
 import { getPokemonsFavoriteApi } from "../api/favorite"
 
