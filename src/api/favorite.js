@@ -2,11 +2,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { includes, pull } from "lodash";
 import { FAVORITE_STORAGE } from "../utils/constants"
 
-//obtiene elementos de favoritos
+//obtiene elementos de favoritos. Siempre devuelve un array
 export async function getPokemonsFavoriteApi(){
   try{
     const response = await AsyncStorage.getItem(FAVORITE_STORAGE);
-    return JSON.parse(response || []);
+    return JSON.parse(response || "[]");
+    //return response ? JSON.parse(response) : [];
   }catch (error){
     throw error;
   }
@@ -30,6 +31,17 @@ export async function isPokemonFavoriteApi(id){
     return includes(response, id)// a include se le pasa un array y el valor que buscamos dentro del array. NO se le envía objetos. Array de un solo nivel. Si lo encuentra devuelve true sino false
   }catch (error)
   {
+    throw error;
+  }
+}
+
+//elimina los pokemones favoritos
+export async function removePokemonFavoriteApi(id){
+  try{
+    const favorites = await getPokemonsFavoriteApi();
+    const newFavorites = pull(favorites, id);
+    await AsyncStorage.setItem(FAVORITE_STORAGE, JSON.stringify(newFavorites))
+  } catch(error) {
     throw error;
   }
 }
