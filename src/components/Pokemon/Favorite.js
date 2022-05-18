@@ -39,7 +39,7 @@ export default function Favorite(props) {
   const removeFavorite = async () => {
     try{
       await removePokemonFavoriteApi(id);
-      chekIcon();
+      onCheakIconFavorite();
     }catch(error){
       console.log(error)
     }

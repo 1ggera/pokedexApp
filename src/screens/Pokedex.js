@@ -42,6 +42,7 @@ export default function Pokedex() {
           imagen: pokemonDetails.sprites.other['official-artwork'].front_default
         })
       }
+      
       setPokemons([...pokemons, ...pokemonsArray]); //desde acá actualizamos el estado. Los ... indican traer la info del array dato por dato
     }catch(error){
       console.error(error);
