@@ -18,7 +18,7 @@ export default function Pokemon(props){
     navigation.setOptions({
       //acá digo q si existe auth renderize el componente sino undefined
       headerRight: () => auth && <Favorite id={pokemon?.id}/>,
-      headerLeft: () => <Icon name="arrow-left" color="#fff" size={20} style={{ marginLeft: 20 }} onPress={() => console.log('Ir atrás')} />,
+      headerLeft: () => <Icon name="arrow-left" color="#fff" size={20} style={{ marginLeft: 20 }} onPress={ navigation.goBack } />,
     })
   }, [navigation, params, pokemon])
 
@@ -27,7 +27,7 @@ export default function Pokemon(props){
         try{
           const response = await getPokemonDetailsApi(params.id)
           setPokemon(response);
-          //console.  log(response);
+          //console.log(response);
         }catch(error){
           navigation.goBack();
         }

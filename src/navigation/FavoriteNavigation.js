@@ -14,12 +14,7 @@ export default function FavoriteNavigation() {
         options={{ title: "Favoritos" }}
         />
       <Stack.Screen 
-        name="Pokemon"
-        component={PokemonScreen}
-        options={{
-          title: "",
-          headerTransparent: true,
-        }}
+        name="Pokemon" component={PokemonScreen} options={{ title: "", headerTransparent: true ,}}
       />
     </Stack.Navigator>
   )

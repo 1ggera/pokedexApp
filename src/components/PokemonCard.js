@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import {capitalize} from 'lodash';
-//import { getPokemonDetailsByUrlApi } from '../api/pokemon';
 import { useNavigation } from "@react-navigation/native"
 import getColorByPokemonType from '../utils/getColorByPokemonType';
 
@@ -9,9 +8,6 @@ export default function PokemonCard(props) {
   const { pokemon } = props;
   const navigation = useNavigation();
   
-  //inspecciono
-  //console.log(pokemonColor)
-
   //solicito el color y lo guardo en una variable
   const pokemonColor = getColorByPokemonType(pokemon.type);
   //luego aplico la variable en una función
